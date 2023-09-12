@@ -1,0 +1,47 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[a4paper,margin=3cm]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{verse}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Lemme}
+\newtheorem{corollary}{Corollaire}  
+\newtheorem{lemma}{Lemme}
+
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\d}{{\, \rm d}}
+
+\title{Exercices}
+\author{oui.}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Une Démonstration du Théorème de Cayley-Hamilton}\label{sec:cayley-analytique}
+On se propose ici de démontrer le théorème de Cayley-Hamilton sur $\mathbb{C}$ par des méthodes analytiques.\\
+On assimilera ici $\mathbb{C}$ et $\mathbb{C}I_{n}$ où $n \in \mathbb{N}$.\\
+On prend $A \in M_{n}(\mathbb{C})$
+\begin{enumerate}
+    \item Montrer que pour $z \in \mathbb{C}$ suffisamment grand, $\det(z - A) \neq 0 $
+    \item En déduire que pour $r$ assez grand, l'intégrale $\int\limits_{-\pi}^{+\pi}\frac{(re^{i\theta})^{k+1}}{re^{i\theta} - A}\frac{d\theta}{2\pi}$ a un sens.
+\end{enumerate}
+
+\section{Des Partitions d'un Ensemble fini}
+On note $b_{n}$ le nombre de partitions d'un ensemble à $n$ éléments.
+\begin{enumerate}
+    \item Calculer $b_{0}, \dots, b_{3}$
+    \item Trouver une relation de récurrence entre les $b_{n}$
+    \item Exprimer $\sum\limits_{n=0}^{\infty}b_{n}\frac{x^{n}}{n!}$
+    \item Donner une expression de $\b_{n}$
+\end{enumerate}
+
+
+\end{document}
