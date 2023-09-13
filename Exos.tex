@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[12pt,a4paper]{book}
 \usepackage[a4paper,margin=3cm]{geometry}
 
 \usepackage[T1]{fontenc}
@@ -9,7 +9,11 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{nicefrac}
+\usepackage{makecell}
+\usepackage{longtable}
 
 \newtheorem{theorem}{Lemme}
 \newtheorem{corollary}{Corollaire}  
@@ -18,30 +22,619 @@
 \renewcommand\qedsymbol{$\blacksquare$}
 \renewcommand{\d}{{\, \rm d}}
 
-\title{Exercices}
-\author{oui.}
+\theoremstyle{definition}
+\newtheorem{exo}{Exercice}[section]
 
+\theoremstyle{remark}
+\newtheorem*{notation}{Notations}
+
+\AtBeginDocument{\def\labelitemi{$\bullet$}}
+
+%Symboles
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\U}{\mathbb{U}}
+
+\renewcommand{\P}{\mathbb{P}}
+\renewcommand{\d}{{\rm \, d}}
+
+\newcommand{\asympt}{\mathop{\sim}}
+\newcommand{\lin}{\mathcal{L}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\cont}{\mathcal{C}}
+
+%Operators
+\DeclareMathOperator{\Card}{Card}
+\DeclareMathOperator{\Gl}{Gl}
+\DeclareMathOperator{\pgcd}{pgcd}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rg}{rg}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\sh}{sh}
+\renewcommand{\th}{\mathop{\rm th}}
+
+%Macros
+\newcommand{\applic}[4]{\begin{array}[t]{rcl}
+#1 & \to & #2 \\
+#3 & \mapsto & #4
+\end{array}}
+
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\ninf}[1]{\left\lVert #1 \right\rVert_\infty}
+\newcommand{\normop}[1]{\left| \left| \left| #1 \right| \right| \right|}
+
+\newcommand{\astuce}{$(\star)$}
+
+\title{Exercices de maths \\ MPSI-MP}
+\author{Hadrien {\sc Chalandon} }
+\date{}
 
 \begin{document}
 \maketitle
 \tableofcontents
-\section{Une Démonstration du Théorème de Cayley-Hamilton}\label{sec:cayley-analytique}
-On se propose ici de démontrer le théorème de Cayley-Hamilton sur $\mathbb{C}$ par des méthodes analytiques.\\
-On assimilera ici $\mathbb{C}$ et $\mathbb{C}I_{n}$ où $n \in \mathbb{N}$.\\
-On prend $A \in M_{n}(\mathbb{C})$
-\begin{enumerate}
-    \item Montrer que pour $z \in \mathbb{C}$ suffisamment grand, $\det(z - A) \neq 0 $
-    \item En déduire que pour $r$ assez grand, l'intégrale $\int\limits_{-\pi}^{+\pi}\frac{(re^{i\theta})^{k+1}}{re^{i\theta} - A}\frac{d\theta}{2\pi}$ a un sens.
-\end{enumerate}
 
-\section{Des Partitions d'un Ensemble fini}
-On note $b_{n}$ le nombre de partitions d'un ensemble à $n$ éléments.
-\begin{enumerate}
-    \item Calculer $b_{0}, \dots, b_{3}$
-    \item Trouver une relation de récurrence entre les $b_{n}$
-    \item Exprimer $\sum\limits_{n=0}^{\infty}b_{n}\frac{x^{n}}{n!}$
-    \item Donner une expression de $b_{n}$
-\end{enumerate}
+\chapter*{Introduction}
+Ce livre est une collection d'exercices de maths de prépa MPSI-MP/MP*. S'il est conçu pour des élèves de MPSI et de MP, d'autres filières de prépa peuvent l'utiliser.
+
+Le but du livre est de regrouper un maximum d'exercices intéressants. Des digressions offrant plus de perspectives sur les maths hors programme de prépa sont insérées dans les sections appropriées. Ces digressions peuvent procurer du pur plaisir mathématique et (peut-être) servir pour les concours X-ENS (attention cependant à bien connaître ce qui et ce qui n'est pas au programme pour éviter de perdre des points en utilisant des résultats hors programme) ou comme inspiration pour un TIPE de maths.
+
+Les exercices sont regroupés plus par thème que par chapitre (par exemple, les chapitres espaces vectoriels normés et espaces vectoriels normés de dimension finie sont regroupés dans la section \og Topologie \fg).
+
+Certains exercices plus durs ont des astuces (données dans la partie \og Astuces \fg) pour éviter de regarder directement la correction (ainsi, faire ces exercices se rapproche d'une khôlle ou d'un oral où l'examinateur donne des pistes de réflexion).
+
+Il est très très vivement conseillé de ne pas regarder la correction (ou les astuces) d'un exercice avant de l'avoir longuement cherché. Si vous êtes en prépa, votre ou vos prof(s) vous ont probablement déjà prévenus.
+
+Ce livre suppose le cours de prépa déjà connu et aucun rappel n'est en général fourni. Ce livre n'est pas non plus un substitut pour des TDs avec un prof en chair et en os. Il est probablement mieux utilisé pour réviser ou comme supplément de TD.
+
+Si vous êtes prof/TDman/peut-importe comment vous vous désignez, oui, vous pouvez chourrer des exos d'ici, personne vous jugera.
+
+\begin{itemize}
+    \item Vous avez un exercice que vous pensez qui est bien et vous voudriez le voir ajouté au livre ?
+    \item Vous pensez qu'un exercice est bien trop dur et a besoin d'une astuce ?
+    \item Vous avez trouvé une erreur ?
+    \item Vous avez envie de me traiter de noms d'oiseaux ?
+\end{itemize}
+Si vous avez répondu \og oui \fg à au moins $\frac{1}{2}$ question ci-dessus alors contactez moi ! //mettre addresse mail maths 
+
+\section*{Comment utiliser ce livre}
+
+\begin{itemize}
+    \item Les exercices ne sont pas nécessairement à faire dans l'ordre.
+    \item Les exercices comportant une astuce sont marqués d'une étoile \astuce.
+    \item Certains exercices utilisent des résultats d'exercices précédents.\\
+    Si l'exercice dont on utilise les résultats n'est pas dans le même chapitre, alors l'exercice utilisé est soit mentionné dans l'énoncé, soit (s'il n'est pas strictement nécessaire ou jugé retrouvable) précisé dans la partie \og astuces \fg.
+\end{itemize}
+
+\tableofcontents
+
+\part{Exercices de MPSI}
+
+\chapter{Raisonnement, ensembles, applications et relations}
+
+\section{Raisonnements}
+
+Les trois exercices suivants sont extrêmement classiques.
+
+\begin{exo}
+    Montrer que $\sqrt{2}$ est irrationnel (bonus : généraliser).
+\end{exo}
+
+\begin{exo}
+    Soit $n \in \Z$. Montrer que si $n^2$ est impair, $n$ l'est aussi.
+\end{exo}
+
+\begin{exo}
+    Soit $f : \R \to \R$ continue telle que
+    \[\forall (x,y)\in \R ^2, f(x + y) = f(x) + f(y)\]
+    \begin{enumerate}
+        \item Montrer que
+        \[\exists a \in \R, \forall n \in \Z, f(n) = an \]
+        \item En déduire que
+        \[\forall r \in \Q, f(r) = ar\]
+        \item Prolonger ce résultat en
+        \[\forall x \in \R, f(x) = ax\]
+        (il est possible que cette question demande du cours qui n'a pas encore été vu ; si c'est le cas, attendre le cours sur les nombres réels)
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Montrer que
+    \[
+    \forall n \in \N^*, 1 + \frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{n^2} \le 2 - \frac{1}{n}
+    \]
+\end{exo}
+
+\section{Ensembles}
+
+\begin{exo}[Théorème de Cantor]
+    Soit $E$ un ensemble. Montrer qu'il n'existe pas de surjection de $E$ dans $\mathcal{P}(E)$.
+\end{exo}
+
+\section{Applications et relations}
+
+\begin{exo}
+    Soit $E$ un ensemble et $A,B \in \mathcal{P}(E)$. Soit $f : \applic{\mathcal{P}(E)}{\mathcal{P}(A) \cap \mathcal{P}(B)}{X}{(X\cap A, X \cap B)}$.
+    \begin{enumerate}
+        \item Donner une condition nécessaire et suffisante pour que $f$ soit injective.
+        \item Même question pour que $f$ soit surjective.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Soit $f : \N \to \N$ une bijection.
+    \begin{enumerate}
+        \item Montrer que $\lim_{n\to+\infty} f(n) = +\infty$.
+        \item Le résultat subsiste-t-il si on suppose seulement $f$ injective ? Surjective ?
+    \end{enumerate} 
+\end{exo}
+
+\section{Digressions et exercices supplémentaires}
+% Ce qu'est N, ce qu'est une fonction, quotientage
+% Cantor-Bernstein
+
+\begin{exo}
+    Soit $E$ un ensemble et $\mathcal{R}$ une relation binaire sur $E$ réflexive et transitive (on dit que $\mathcal{R}$ est un \emph{préordre}).
+    \begin{enumerate}
+        \item Montrer que la relation binaire sur $E$ $\sim$ définie par
+        \[\forall x,y\in E, (x \sim y) \iff (x\mathcal{R}y \wedge y \mathcal{R}x)\]
+        est une relation d'équivalence.
+        \item Montrer que la relation binaire $\le$ définie sur l'ensemble $\nicefrac{E}{\sim}$ par
+        \[\forall \overline{x},\overline{y} \in \nicefrac{E}{\sim}, (\overline{x} \le \overline{y}) \iff (x\mathcal{R}y) \]
+        est bien définie (ne dépend pas du choix du représentant) et est une relation d'ordre.
+    \end{enumerate}
+\end{exo}
+
+\chapter{Réels, complexes, trigonométrie, sommes et produits}
+
+\section{Compléments sur les réels}
+
+Quelques exercices sur la manipulation de la borne supérieure :
+
+\begin{exo}
+    Soient $A,B \subset \R$ majorées non vides. Montrer que $\sup(A+B)$ existe et que $\sup(A+B) = \sup(A) + \sup(B)$.
+\end{exo}
+
+\begin{exo}
+    Soient $A,B \subset \R^+$ majorées. Montrer que $A\times B$ est majorée et que $\sup(A\times B)=\sup(A)\times\sup(B)$.
+\end{exo}
+
+\begin{exo}
+    Soit $A \subset \R$ bornée. Soit $\lambda \in \R$.
+    \begin{itemize}
+        \item Montrer que si $\lambda \ge 0$, $\sup (\lambda A) = \lambda \sup (A)$.
+        \item Montrer que si $\lambda < 0$, $\sup (\lambda A) = \lambda \inf (A)$.
+    \end{itemize}
+\end{exo}
+
+\begin{exo}
+    Soit $f : [0,1] \to [0,1]$ continue. Montrer que $f$ admet un point fixe.
+\end{exo}
+
+\section{Complexes et trigonométrie}
+
+\begin{exo}
+    Calculer $\cos\left(\frac{\pi}{8}\right)$.
+\end{exo}
+
+\begin{exo}
+    Soit $n \in \N^*$. Calculer $\sum_{\omega \in \U_n} \omega$.
+\end{exo}
+
+\begin{exo}
+    Montrer que pour $x \in \R^*$ :
+    \[\arctan(x) + \arctan\left(\frac{1}{x}\right) = \rm{sgn}(x) \frac{\pi}{2}\]
+    Où $\rm{sgn}(x)$ est le signe de $x$.
+\end{exo}
+
+\section{Sommes et produits}
+
+\begin{exo}
+    Calculer
+    \[
+    \prod_{k=2}^{n} \left( 1 - \frac{1}{k^2} \right)
+    \]
+\end{exo}
+
+\begin{exo}
+    Trouver les suites $(u_n)_{n\ge1}$ de nombres réels strictement positifs telles que
+    \[
+    \forall n \in \N^*, \sum_{k=1}^n u_k^3 = \left( \sum_{k=1}^n u_k \right)^2
+    \]
+\end{exo}
+
+\section{Digressions et exercices supplémentaires}
+% Construction de R
+% Nombres hypercomplexes
+% Sommation d'Abel
+% Preuve rigoureuse de changement d'indice
+
+\chapter{Fonctions usuelles : Dérivées, Intégrales, équations différentielles}
+
+\section{Dérivées}
+
+\section{Intégrales}
+
+\section{Équations différentielles}
+
+\chapter{Suites, limites, continuité}
+
+\section{Suites}
+
+\begin{exo}
+    Soit $\alpha$ un irrationnel
+\end{exo}
+
+%points fixes
+
+\section{Continuité}
+
+\begin{exo}
+    Soit $f \in \cont([0,1], \C)$. Montrer que
+    \[\sum_{k=0}^{+\infty} (-1)^k \int_0^1 t^k f(t) \d t = \int_0^1 \frac{f(t)}{1+t} \d t\]
+    Dans l'éventualité où vous avez un doute, la somme jusqu'à l'infini est la limite des sommes finies, $\sum_{k=0}^{+\infty} u_k = \lim_{n\to +\infty} \sum_{k=0}^n u_k$. Il faut prouver qu'elle existe.
+\end{exo}
+
+%lemme avec int_0^\pi f(t) sin(xt) dt quand f C1 et x -> +inf
+
+\chapter{Dérivation}
+
+\section{Fonctions dérivables}
+
+\section{Convexité}
+
+\chapter{Analyse asymptotique}
+
+\section{Analyse asymptotique des suites}
+
+\section{Développements limités}
+
+\chapter{Structures algébriques}
+
+\section{Groupes}
+
+
+\begin{exo}
+    
+\end{exo}
+
+\begin{exo}
+    Soit $G$ un groupe fini d'ordre pair. Montrer qu'il existe $x\in G$ différent de $e$ tel que $x^2 = e$.
+\end{exo}
+
+\begin{exo}
+    Soit $G$ un groupe fini et $f$ un endomorphisme de $G$ tel que
+    \[|\{x \in G \mid f(x) = x^{-1}\}| > \frac{|G|}{2}\]
+    Montrer que $f$ est une involution (c'est-à-dire que $f \circ f = \Id_G$).
+\end{exo}
+
+\section{Anneaux et corps}
+
+\section{Digressions et exercices supplémentaires}
+
+\begin{exo}
+    Soit $E$ un ensemble fini muni d'une loi de composition interne associative ($E$ est donc un magma associatif). Montrer l'existence de $x \in E$ tel que $x^2 = x$.
+\end{exo}
+
+\chapter{Arithmétique}
+
+\section{Divisibilité, PGCD, PPCM}
+
+\section{Nombres premiers}
+
+\begin{exo}
+    Calculer, pour $n \in \N$, $v_2(5^{2^n} - 1)$.
+\end{exo}
+
+\section{Digressions et exercices supplémentaires}
+
+%Formule d'inversion de Möbius? Plutôt en spé
+
+\chapter{Polynômes et fractions rationnelles}
+
+\section{Polynômes}
+
+\section{Fraction rationnelles}
+
+\section{Digressions et exercices supplémentaires}
+%parler de polynômes à coefficients dans des corps chelous
+%parler de corps de fractions
+%Parler de séries formelles
+
+\chapter{Algèbre linéaire de base}
+
+\section{Sous-espaces et applications linéaires}
+
+\begin{exo}
+    Soient $F,G$ des sous-espaces de $E$. Montrer que $F \cup G$ est un sous-espace de $E$ si et seulement si $F \subset G$ ou $G \subset F$.
+\end{exo}
+
+\begin{exo}
+    Soit $u\in \mathcal{L}(E)$ de rang 1.
+    \begin{enumerate}
+        \item Montrer qu'il existe $\lambda \in \K$ tel que $u^2 = \lambda u$.
+        \item En déduire que pour $a \in \K \setminus {0,\lambda}$, $u - a \Id \in \Gl(E)$.
+    \end{enumerate}
+\end{exo}
+
+\section{Dimension finie}
+
+\chapter{Matrices}
+
+\chapter{Uniforme continuité, intégration}
+
+\chapter{Séries}
+
+\chapter{Groupe symétrique et déterminants}
+
+\begin{notation}
+%TODO : ceci est un hack dégueu il faudrait trouver mieux
+%TODO : mettre des espaces autour de la notation
+\hspace{1pt}
+\begin{itemize}
+    \item Pour $n \in \N$, le groupe symétrique d'ordre $n$ sera noté $\frak{S}_n$.
+\end{itemize}
+\end{notation}
+
+\section{Groupe symétrique}
+
+\begin{exo}
+    Soit $E$ un ensemble fini. Soit $f : E \to E$ une involution (c'est-à-dire $f \circ f = \Id_E$). On pose $P = \{x\in E \mid f(x) = x\}$. Montrer que $\Card (P) \equiv \Card (E) \; [2]$.
+\end{exo}
+
+\section{Déterminants}
+
+\chapter{Espaces vectoriels préhilbertiens}
+
+\chapter{Dénombrement}
+
+\chapter{Probabilités}
+
+\part{Exercices de MP}
+
+\chapter{Rappels et compléments d'analyse}
+
+\section{Sous-ensembles de $\R$}
+
+On replace cet exercice classique ici :
+
+\begin{exo}
+    Soit $G \subset \R$ un sous-groupe de $(\R,+)$. Montrer que ou bien $G$ est de la forme $a\Z$ avec $a \in \R$, ou bien $G$ est dense dans $\R$.
+\end{exo}
+
+De ce résultat utile découlent quelques applications :
+
+\begin{exo}
+    Soit $H = a\Z + b\Z$ avec $(a,b) \in \R\times\R^*$. Montrer que $H$ est dense dans $\R$ si et seulement si $\frac{a}{b} \notin \Q$.
+\end{exo}
+
+\begin{exo}
+    Que dire d'une fonction continue $f : \R \to \R$ admettant $1$ et $\sqrt{2}$ comme périodes ?
+\end{exo}
+
+\begin{exo}
+    Caractériser les sous-groupes de $(\mathbb{U}, \times)$.
+\end{exo}
+
+
+\chapter{Intégrales généralisées}
+
+\chapter{Suites et séries de fonctions}
+
+\chapter{Intégrales à paramètre}
+
+\chapter{Structures algébriques}
+
+\section{Groupes}
+
+\begin{notation}
+%TODO : ceci est un hack dégueu il faudrait trouver mieux
+%TODO : mettre des espaces autour de la notation
+\hspace{1pt}
+\begin{itemize}
+    \item On considérera des groupes d'élément neutre $e$.
+    \item Quand la loi de composition interne d'un groupe n'est pas précisée, on adoptera la notation multiplicative : $x * y$ sera noté $xy$ et l'inverse de $x$ est $x^{-1}$.
+    \item L'ordre d'un élément $x\in G$ sera noté $o(x)$.
+\end{itemize}
+\end{notation}
+
+L'exercice classique par excellence sur les groupes est le théorème de Lagrange sur les groupes finis. Ce théorème n'est pas au programme de CPGE mais son utilisation dans d'autres exercices sur les groupes est commune.
+
+\begin{exo}[Théorème de Lagrange]
+ Soit $G$ un groupe fini. Soit $H$ un sous-groupe de $G$. Montrer que $\Card (H) \mid \Card (G)$.
+\end{exo}
+
+Le corollaire du théorème de Lagrange est un résultat au programme de MP. La preuve n'est cependant exigible que dans le cas abélien. Le théorème de Lagrange permet de donner une démonstration générale de son corollaire.
+
+\begin{exo}[Corollaire du théorème de Lagrange]
+ Soit $G$ un groupe fini. Soit $x \in G$. Montrer que $x ^ {\Card (G)} = e$.
+\end{exo}
+
+Ces relations de divisibilité dans les groupes finis les lient à des notions d'arithmétique.
+
+\begin{exo}
+    Soit $G$ un groupe fini d'ordre $p$ premier. Que dire de la structure de $G$ ?
+\end{exo}
+
+\begin{exo}
+    Soit $G$ un groupe. On pose $\mathcal{Z}(G) = \{x \in G \mid \forall y\in G, xy=yx\}$ le centre de $G$. Montrer que $\mathcal{Z}(G)$ est un sous-groupe de $G$.
+\end{exo}
+
+\begin{exo}
+    Soit $G$ un groupe abélien.
+    \begin{enumerate}
+        \item Soient $a,b \in G$ d'ordres finis. Montrer que $o(ab)$ est d'ordre fini et que si $o(a) \wedge o(b) = 1$, alors $o(ab)=o(a)o(b)$.
+        \item Le résultat subsiste-t-il si $G$ n'est plus abélien ?
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Soit $G$ un groupe fini non commutatif. Montrer que la probabilité que deux éléments de $G$ choisis au hasard (uniformément) commutent est inférieure à $5/8$.
+\end{exo}
+
+\section{Anneaux et corps}
+
+\begin{exo}
+    Soit $K$ un corps fini.
+\end{exo}
+
+\section{Digressions et exercices supplémentaires}
+
+En prépa, on a tendance à définir un corps comme étant commutatif. Certains auteurs ne demandent pas cette hypothèse d'un corps. Cependant, un corps fini est toujours commutatif (Théorème de Wedderburn).
+
+
+
+\chapter{Topologie}
+
+\section{Topologie des espaces vectoriels normés}
+
+\section{Topologie des espaces vectoriels normés de dimension finie}
+
+\section{Séries vectorielles}
+
+\section{Digressions et exercices supplémentaires}
+
+
+\chapter{Compléments d'algèbre linéaire}
+
+\chapter{Réduction des endomorphismes}
+
+\begin{exo}
+    Soit $E$ un $\C$-espace vectoriel de dimension finie.
+\end{exo}
+
+
+\chapter{Probabilités de spé}
+
+\section{Dénombrabilité}
+
+\section{Variables aléatoires discrètes}
+
+
+\chapter{Fonctions vectorielles}
+
+\begin{exo}[Une Démonstration du Théorème de Cayley-Hamilton]
+    On se place sur $\C$\\
+    On assimilera ici $\mathbb{C}$ et $\mathbb{C}I_{n}$ où $n \in \mathbb{N}$, et on note $A^{-1} = \frac{1}{A}$ même pour une matrice.\\
+    On prend $A \in M_{n}(\mathbb{C})$
+    \begin{enumerate}
+        \item Montrer que pour $z \in \mathbb{C}$ suffisamment grand, $\det(z - A) \neq 0 $
+        \item En déduire que pour $r$ assez grand, l'intégrale \[\int\limits_{-\pi}^{+\pi}\frac{(re^{i\theta})^{k+1}}{re^{i\theta} - A}\frac{d\theta}{2\pi}\] a un sens. 
+        \item Montrer que si $A$ est suffisamment 'petite' : \[\frac{1}{1-A} = \sum_{k=0}^{+\infty} A^{k} \]
+        \item En déduire la valeur de l'intégrale de la question 2.
+        \item Calculer $\chi_{A}(A)$. Quel résultat retrouve-t-on ?
+    \end{enumerate}
+\end{exo}
+
+
+\chapter{Séries entières}
+
+\section{Séries Génératrices en Dénombrement}
+
+\begin{exo}[Des Partitions d'un Ensemble fini]
+    On note $b_{n}$ le nombre de partitions d'un ensemble à $n$ éléments.
+    \begin{enumerate}
+        \item Calculer $b_{0}, \dots, b_{3}$
+        \item Trouver une relation de récurrence entre les $b_{n}$
+        \item Exprimer $\sum\limits_{n=0}^{\infty}b_{n}\frac{x^{n}}{n!}$
+        \item Donner une expression de $b_{n}$
+    \end{enumerate}
+\end{exo}
+
+\chapter{Espaces euclidiens}
+
+\section{Isométries et matrices orthogonales}
+
+\section{Endomorphismes autoadjoints positifs, définis positifs}
+
+\begin{exo}[Racine carrée d'un endomorphisme positif]
+    Soit $u$ un endomorphisme autoadjoint positif de $E$.
+    \begin{enumerate}
+        \item Montrer qu'il existe $v$ endomorphisme autoadjoint positif de $E$ tel que $v^2 = u$ et que si $u$ est défini positif, $v$ l'est aussi.
+        \item Montrer que $v \in \R [u]$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}[Décomposition polaire]
+    Soit $u \in \Gl (E)$. Montrer qu'il existe un unique couple $(o, s) \in \mathcal{O}(E) \times \mathcal{S}^{++} (E)$ tel que $u=os$.
+\end{exo}
+
+\section{Digressions et exercices supplémentaires}
+% Parler des C-eve
+
+\chapter{Équations différentielles linéaires}
+
+\chapter{Calcul différentiel}
+
+
+
+
+\part{Astuces}
+
+
+\part{Solutions : MPSI}
+
+
+\part{Solutions : MP}
+
+\appendix
+
+\part{Annexe : trucs utiles en général}
+
+%\setcounter{chapter}{0}
+%\renewcommand\thechapter{\Alph{chapter}}
+
+\chapter{Liste non exhaustive de symboles utilisés en mathématiques}
+
+\section{Alphabet grec}
+
+\begin{longtable}{| c | c | c |} 
+ \hline
+ Caractère & Nom & Utilisation \\
+ \hline\hline
+ \endhead
+ A$\alpha$ & Alpha & \makecell[l]{$\alpha$ : variable (souvent coefficient) \\ A : pas utilisé} \\ \hline
+ B$\beta$ & Bêta & 78 \\ \hline
+ $\Gamma\gamma$ & Gamma & 778\\ \hline
+ $\Delta\delta$ & Delta & 18744 \\ \hline
+ E$\varepsilon$ & Epsilon & 788 \\ \hline
+ Z$\zeta$ & Zêta & \\ \hline
+ H$\eta$ &  Êta & \\ \hline
+ $\Theta\theta$ & Thêta & \\ \hline
+ I$\iota$ & Iota & \\ \hline
+ K$\kappa$ & Kappa & \\ \hline
+ $\Lambda\lambda$ & Lambda & \\ \hline
+ M$\mu$ & Mu & \\ \hline
+ N$\nu$ & Nu & \\ \hline
+ $\Xi\xi$ & Xi & \\ \hline
+ Oo & Omicron& \\\hline 
+ $\Pi\pi$ & Pi & \\ \hline
+ P$\rho$ & Rho & \\ \hline
+ $\Sigma\sigma$ & Sigma & \\ \hline
+ T$\tau$ & Tau & \\ \hline
+ Y$\upsilon$ & Upsilon & \\ \hline
+ $\Phi\varphi$ & Phi & \\ \hline
+ X$\chi$ & Chi & \\ \hline
+ $\Psi\psi$ & Psi & \\ \hline
+ $\Omega\omega$ & Omega & \\ \hline
+ 
+\end{longtable}
+
+\section{Algèbre}
+
+\section{Analyse}
+
+
+
+\chapter{Formulaire}
+
+\section{Inégalités à connaître}
+
+\section{Formules célèbres}
 
 
 \end{document}
