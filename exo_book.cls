@@ -35,7 +35,7 @@
 \author{Null}
 \title{None}
 
-\newtheorem{theorem}{Lemme}
+\newtheorem{theorem}{Théorème}
 \newtheorem{corollary}{Corollaire}  
 \newtheorem{lemma}{Lemme}
 
