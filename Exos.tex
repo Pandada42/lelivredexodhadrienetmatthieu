@@ -1,8 +1,9 @@
 \documentclass[12pt,a4paper]{exo_book}
 
+
 \title{Exercices de maths \\ MPSI-MP}
 \author{Hadrien {\sc Chalandon} \\ Matthieu {\sc Boyer}}
-\date{}
+\date{\today}
 
 \begin{document}
 
@@ -194,12 +195,29 @@ Quelques exercices sur la manipulation de la borne supérieure :
 \section{Suites}
 
 \begin{exo}
-    Soit $\alpha$ un irrationnel
+    Soit $x$ irrationnel. Soient $(p_n) \in \Z^\N, (q_n) \in (\N^*) ^ \N$ deux suites telles que
+    \[\frac{p_n}{q_n}\xrightarrow[n\to +\infty]{} x\]
+    Montrer que $(|p_n|)$, $(q_n)$ divergent vers $+\infty$.
 \end{exo}
 
-%points fixes
+\subsection*{Suites récurrentes}
+
+\begin{exo}
+    \begin{enumerate}
+        \item Calculer, pour $n \ge 2$ :
+        \[\frac{1}{2} \sqrt{2 + \sqrt{2 + \cdots + \sqrt{2}}}\]
+        (où il y a $n-1$ radicaux).
+        \item En déduire
+        \[\frac{1}{2} \sqrt{2 - \sqrt{2 + \cdots + \sqrt{2}}}\]
+        (où il y a $n-1$ radicaux).
+        \item En déduire
+        \[\lim_{n\to +\infty} 2^n \sqrt{2 - \sqrt{2 + \cdots + \sqrt{2}}}\]
+    \end{enumerate}
+\end{exo}
 
 \section{Continuité}
+
+%Mettre les exos sur les points fixes ici
 
 \begin{exo}
     Soit $f \in \cont([0,1], \C)$. Montrer que
@@ -295,6 +313,10 @@ Quelques exercices sur la manipulation de la borne supérieure :
 
 \chapter{Uniforme continuité, intégration}
 
+\begin{exo}
+    Soit $f : \R_+ \to \R$ uniformément continue sur $\R_+$. Montrer qu'il existe $\alpha,\beta > 0$ tels que $|f(x)| \le \alpha x + \beta$ pour tout $x \in \R_+$.
+\end{exo}
+
 \chapter{Séries}
 
 \begin{exo}
@@ -334,6 +356,28 @@ Quelques exercices sur la manipulation de la borne supérieure :
 
 \chapter{Rappels et compléments d'analyse}
 
+\begin{exo}
+    Soit $(u_n)$ une suite réelle. On définit :
+    \[\limsup u_n = \lim_{n\to +\infty} \sup \{u_k \mid k \ge n\}\]
+    \begin{enumerate}
+        \item Justifier que $\limsup u_n$ existe dans $\overline{\R}$.
+        \item Calculer $\limsup (-1)^n$ et $\limsup \frac{(-1)^n}{n}$.
+        \item On suppose que $\limsup u_n \in \R$. Montrer que c'est la plus grande valeur d'adhérence de $(u_n)$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Pour $n \in  \N^*$, on pose $\sigma(n)$ la somme des diviseurs de $n$. Montrer que pour $n \in \N^*$, $\sigma (n) \le n (\ln(n) + 1)$.
+\end{exo}
+
+\begin{exo}
+    \item La réciproque du lemme de Cesàro est-elle vraie ?
+    \item La réciproque est-elle vraie pour une suite monotone ?
+    \item Supposons que $(u_n) \in \R^\N$ vérifie
+    \[\frac{1}{n+1} \sum_{k=0}^n u_k \xrightarrow[n \to +\infty]{} \ell \in \R \quad \text{et} \quad u_{n+1} - u_n = o\left(\frac{1}{n}\right)\]
+    Montrer que $u_n \xrightarrow[n\to + \infty]{} \ell$.
+\end{exo}
+
 \section{Sous-ensembles de $\R$}
 
 On replace cet exercice classique ici :
@@ -356,11 +400,11 @@ De ce résultat utile découlent quelques applications :
     Caractériser les sous-groupes de $(\mathbb{U}, \times)$.
 \end{exo}
 
-\begin{exo}
-    Soit $x \in \R \setminus \Q$ et $(p_n) \in \N ^ \N, (q_n) \in (\Z^*)^\N$ deux suites telles que $\left(\frac{p_n}{q_n}\right)$ converge vers $x$. Montrer que $(|p_n|)$, $(q_n)$ divergent vers $+\infty$.
-\end{exo}
-
 \section{Séries numériques}
+
+\begin{exo}
+    Donner un équivalent simple quand $n$ tend vers $+\infty$ de $\sum_{p=1}^n p^p$.
+\end{exo}
 
 \begin{exo}
     Soit $(u_n)$ une suite de réels strictement positifs décroissante telle que $\sum u_n$ converge. Montrer que $u_n = o\left(\frac{1}{n}\right)$. Le résultat subsiste-t-il si $(u_n)$ n'est plus supposée décroissante ?
@@ -372,7 +416,110 @@ De ce résultat utile découlent quelques applications :
 
 \chapter{Intégrales généralisées}
 
+\begin{exo}
+    Déterminer la nature de $\displaystyle \int_0^{+\infty} \frac{\ln(x)}{1 + e^x} \d x$ et de $\displaystyle \int_{-\infty}^{+\infty} \frac{e^{-x^2}}{\sqrt{|x|}} \d x$.
+\end{exo}
+
+\begin{exo}
+    Étudier l'existence de $\displaystyle \int_0^{+\infty} \frac{\ln(x)}{x^2 - 1} \d x$.
+\end{exo}
+
+\begin{exo}
+    Trouver un équivalent simple de $\displaystyle e^{x^2}\int_x^{+\infty} e^{-t^2} \d t$ quand $x$ tend vers $+\infty$.
+\end{exo}
+
+\begin{exo}
+    Donner la nature de l'intégrale $\displaystyle \int_{0}^{+\infty} \cos(e^x) \d x$.
+\end{exo}
+
+\begin{exo}
+    Montrer l'équivalent
+    \[\int_0^1 \frac{1}{x^3 + a^2} \d x \underset{a \to +\infty}{\sim} \frac{1}{a^2}\]
+\end{exo}
+
+\begin{exo}
+    Pour $n \in \N^*$, on pose $\displaystyle I_n = \int_0^{+\infty} \frac{1}{(1+t^2)^n} \d t$.
+    \begin{enumerate}
+        \item Montrer que $I_n$ converge.
+        \item Trouver une relation de récurrence entre $I_{n+1}$ et $I_n$.
+        \item En déduire une expression pour $I_n$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Déterminer la nature de $\displaystyle \int_0^{+\infty} \cos(t^2 + t) \d t$. \\
+    Indication : écrire $\cos(t^2 + t) = (2t+1)\cos(t^2 + t)\frac{1}{2t+1}$ pour $t \in \R^+$.
+\end{exo}
+
+\begin{exo}
+    Montrer que $\displaystyle \int_0^{+\infty} e^{ix^2} \d x$ converge.
+\end{exo}
+
+\begin{exo}
+    Nature de $\displaystyle \int_1^{+\infty} e - \left(1 + \frac{1}{x}\right)^x \d x$.
+\end{exo}
+
+\begin{exo}
+    Soit $x > 0$. On pose $f(x) = \displaystyle \int_0^{+\infty} \frac{e^{-t}}{t + x} \d t$.
+    \begin{enumerate}
+        \item Montrer que pour $x > 0$, l'intégrale définissant $f(x)$ est convergente.
+        \item Déterminer un équivalent simple de $f(x)$ quand $x$ tend vers 0.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Pour $n\in \N^*$, on pose
+    \[u_n = \sum_{k=1}^n \frac{1}{k} - \ln (n) \quad \text{et} \quad f : \applic{]0,+\infty[}{\R^+}{t}{\frac{t - \lfloor x \rfloor}{t^2}}\]
+
+    \begin{enumerate}
+        \item Montrer que $\int_1^{+\infty} f(t) \d t$ est bien définie et convergente.
+        \item Montrer que
+        \[\int_1^{+\infty} f(t) \d t = \sum_{j=1}^{+\infty} \left(\ln(j+1) - \ln(j) - \frac{1}{j+1}\right)\]
+        \item Montrer que $(u_n)$ converge vers $1 - \int_1^{+\infty} f(t) \d t$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Soit $(a_n)$ décroissante de limite nulle. On pose pour $x > 0$, $N(x) = \Card\{n \in \N \mid a_n \ge x\}$. Montrer que $N$ est intégrable sur $]0,+\infty[$ si et seulement si la série $\sum a_n$ converge.
+\end{exo}
+
 \chapter{Suites et séries de fonctions}
+
+\section{Suites de fonctions}
+
+\begin{exo}
+    Étudier la convergence simple, uniforme et localement uniforme de la suite de fonctions définie par 
+    \[f_n (x) = \frac{nx}{1+n^2 x^2}\]
+\end{exo}
+
+\begin{exo}
+    Pour $n\in \N^*$, on définit $f_n : \applic{[0,1]}{\R}{x}{(x^2 + 1)\frac{ne^x + xe^{-x}}{n + x}}$
+    \begin{enumerate}
+        \item Montrer que $(f_n)$ converge uniformément sur $[0,1]$.
+        \item En déduire $\displaystyle \lim_{n\to +\infty} \int_0^1 (x^2 + 1)\frac{ne^x + xe^x}{n+x} \d x$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Étudier la convergence (simple, uniforme ou localement uniforme) sur $\R$ de la suite de fonctions définie par
+    \[\forall n \in \N, \forall x \in \R, f_n (x) = n (1-x)^n \sin \left(\frac{\pi x}{2}\right)\]
+\end{exo}
+
+\begin{exo}
+    Soit $(f_n)$ une suite de fonctions de $[a,b]$ dans $\R$ lipschitziennes de même rapport $M > 0$ convergeant simplement sur $[a,b]$ vers $f$. Montrer que la convergence est uniforme.
+\end{exo}
+
+\section{Séries de fonctions}
+
+\begin{exo}
+    Soit $\displaystyle f(x) = \sum_{n=1}^{+\infty} \frac{(-1)^{n-1}}{\ln(nx)}$.
+
+    \begin{enumerate}
+        \item Vérifier que $f$ est bien définie sur $]1, +\infty[$.
+        \item Donner les limites en $+\infty$ et $1^+$ de $f$.
+        \item Montrer que $f$ est de classe $\cont^1$ sur $]1, +\infty[$ et dresser son tableau de variation.
+    \end{enumerate}
+\end{exo}
 
 \chapter{Intégrales à paramètre}
 

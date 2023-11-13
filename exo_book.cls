@@ -101,6 +101,4 @@
 \newcommand{\scalar}[1]{\left\langle #1 \right\rangle}
 \newcommand{\znz}[1]{\Z/#1\Z}
 
-
-
 \newcommand{\astuce}{$(\star)$}
