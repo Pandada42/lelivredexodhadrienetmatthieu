@@ -521,8 +521,99 @@ De ce résultat utile découlent quelques applications :
     \end{enumerate}
 \end{exo}
 
+\begin{exo}
+    Soit $\displaystyle f(x) = \sum_{n=1}^{+\infty} \frac{x^n \sin (nx)}{n}$.
+
+    \begin{enumerate}
+        \item Montrer que $f$ est de classe $\cont^1$ sur $]-1,1[$.
+        \item Calculer $f'(x)$. En déduire l'expression de $f$ sur $]-1,1[$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Montrer que $\displaystyle \int_0^1 x^{-x} \d x = \sum_{n=1}^{+\infty} \frac{1}{n^n}$
+\end{exo}
+
+\begin{exo}
+    \begin{enumerate}
+        \item Montrer que pour $x \in [0,1[$, $\displaystyle - \ln (1-x) = \sum_{n=1}^{+\infty} \frac{x^n}{n}$
+        \item Montrer que $\displaystyle \int_0^1 \frac{\ln(t)\ln(1-t)}{t} \d t = \sum_{n=1}^{+\infty} \frac{1}{n^3}$
+    \end{enumerate}
+\end{exo}
+
 \chapter{Intégrales à paramètre}
 
+\begin{exo}
+    Soit $f : [0,1] \to \R$ continue par morceaux sur $[0,1]$, strictement croissante et telle que $f(0) = 0, f(1) = 1$. Montrer que
+    \[\lim_{n\to+\infty} \int_0^1 f(t)^n \d t = 0\]
+\end{exo}
+
+\begin{exo}
+    Montrer que $\displaystyle \int_0^1 x^{-x} \d x = \sum_{n=1}^{+\infty} \frac{1}{n^n}$
+\end{exo}
+
+\begin{exo}
+    Pour $x \ge 0$, on pose $\displaystyle I(x) = \int_0^{+\infty} \frac{\sin(xt)}{t} e^{-t} \d t$.
+
+    \begin{enumerate}
+        \item Justifier que $I$ est bien définie sur $[0, +\infty]$.
+        \item Montrer que $I$ est dérivable sur $[0, +\infty]$.
+        \item En déduire $I$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Pour $n \in \N^*$ et $x \in ]0,+\infty[$, on pose $\displaystyle I_n (x) = \int_0^{+\infty} \frac{1}{(t^2 + x^2)^n} \d t$.
+    \begin{enumerate}
+        \item Calculer la dérivée de la fonction $I_n$ sur $]0, +\infty[$.
+        \item En déduire la valeur de $\displaystyle \int_0^{+\infty} \frac{1}{(t^2 + 1)^3} \d t$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Calculer $\displaystyle \int_0^{+\infty} \frac{x}{e^x - 1} \d x$.
+\end{exo}
+
+\begin{exo}[D'Alembert-Gauss avec des intégrales à paramètres]
+    On admet que si $f \in \cont^1 (\R, \C^*)$, alors alors on dispose de $\rho,\theta \in \cont^1 (\R,\R)$ avec $\rho$ à valeurs dans $\R^{+*}$ telles que $f = \rho e^{i \theta}$. \\
+    Soit $f \in \cont^1(\R, \C^*)$ $2\pi$-périodique. On pose
+    \[I(f) = \frac{1}{2i\pi} \int_0^{2\pi} \frac{f'(t)}{f(t)} \d t\]
+    \begin{enumerate}
+        \item Montrer que $I(f) \in \Z$.
+        \item Soit $P \in \C[X]$. Pour $r\ge0$, on pose $P_r : t \mapsto P(re^{it})$.
+        \begin{enumerate}
+            \item On suppose que $P$ ne s'annule pas. Soit $J : r \to I(P_r)$.
+            \begin{enumerate}
+                \item Montrer que $J$ est constante.
+                \item Soit $n = \deg P$. Étudier $z\mapsto \frac{zP'(z)}{P(z)}$ quand $|z|$ tend vers l'infini puis établir une contradiction. Que vient-on de démontrer ?
+            \end{enumerate}
+            \item Montrer que pour $r\ge0$, $I(P_r)$ est le nombre de racines de $P$ comptées avec leur multiplicité dont le module est strictement inférieur à $r$.
+        \end{enumerate}
+        \item Montrer la supposition énoncée au début.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Pour $x \ge 0$, on pose $ \displaystyle F(x) = \int_0^{+\infty} \frac{\arctan(xt)}{t(1+t^2)} \d t$.
+
+    \begin{enumerate}
+        \item Montrer que $F$ est définie et de classe $\cont^1$ sur $\R^+$.
+        \item Calculer $F'(x)$ pour $x \ne 1$, puis montrer que l'expression obtenue fonctionne aussi en $x = 1$.
+        \item En déduire une expression simple de $F(x)$.
+        \item Calculer $\displaystyle \int_0^{+\infty} \frac{\arctan^2(t)}{t^2} \d t$.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}[Astuce de Feynman]
+    On veut calculer $\displaystyle \int_0^{+\infty} \frac{\sin(t)}{t} \d t$. Pour ce faire, on considère :
+    \[I : x \mapsto \int_0^{+\infty} \frac{\sin(t)}{t} e^{-xt} \d t\]
+    \begin{enumerate}
+        \item Justifier que $I$ est bien définie sur $[0,+\infty[$.
+        \item Montrer que $f$ est de classe $\cont^1$ sur $]0,+\infty[$.
+        \item En déduire $f(x)$ pour $x \in \R^{+*}$.
+        \item Montrer que $f$ est continue en $0$. Conclure.
+    \end{enumerate}
+\end{exo}
 
 
 \chapter{Structures algébriques}
@@ -574,10 +665,29 @@ Ces relations de divisibilité dans les groupes finis les lient à des notions d
     Soit $G$ un groupe fini non commutatif. Montrer que la probabilité que deux éléments de $G$ choisis au hasard (uniformément) commutent est inférieure à $5/8$.
 \end{exo}
 
+\begin{exo}[Dévissage en produit direct interne]
+    \begin{enumerate}
+        \item Soit $G$ un groupe et $H, K$ deux sous-groupes de $G$. On suppose $H\cap K = 1$, $G = HK$ et enfin $hk = kh$ pour tout $(h,k)\in H\times K$. Montrer que $G\simeq H\times K$.
+        \item Soit $G$ un groupe et $f : G\to \Z$ un morphisme surjectif. Montrer $G \simeq \ker f \times \Z$.
+        \item Classer les groupes d'ordre $6$.
+    \end{enumerate}
+\end{exo}
+
+
+
 \section{Anneaux et corps}
 
+\subsection{Nombres et entiers algébriques}
+
+On dit qu'un nombre complexe $a \in \C$ est algébrique s'il existe $P \in \Q [X]$ tel que $P(a) = 0$.
+
 \begin{exo}
-    Soit $K$ un corps fini.
+    \begin{enumerate}
+        \item Montrer que $\sqrt{5}$ et $i$ sont algébriques.
+        \item Montrer que pour $z \in \C$, $\{P \in \Q [X] \mid P(z) = 0\}$ est un idéal de $\K [X]$.
+        \item Montrer que $3^{1/2} + 2^{1/3}$ est algébrique. Essayer de généraliser la méthode pour montrer que si $x,y$ sont algébriques alors $x+y$ l'est aussi.
+        \item Montrer que si $x$ est algébrique non nul, $\frac{1}{x}$ l'est aussi.
+    \end{enumerate}
 \end{exo}
 
 \section{Digressions et exercices supplémentaires}
