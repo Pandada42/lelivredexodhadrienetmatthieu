@@ -327,6 +327,10 @@ Quelques exercices sur la manipulation de la borne supérieure :
     Soit $(a_n)$ une suite réelle. Montrer que $\sum |a_n|$ converge si et seulement si pour toute suite réelle $(b_n)$ de limite nulle, $\sum a_n b_n$ converge.
 \end{exo}
 
+\begin{exo}
+    Soit $z_{n} \in \left(\C^{\star}\right)^{\N}$ telle qu'il existe $\delta > 0$ tel qu'on a toujours $\abs{z_{m} - z_{n}} > \delta$. Montrer que $\sum z_{n}^{-\alpha}$ converge si $\alpha > 2$. Que dire sinon ? 
+\end{exo}
+
 \chapter{Groupe symétrique et déterminants}
 
 \begin{notation}
@@ -547,6 +551,19 @@ De ce résultat utile découlent quelques applications :
         \sum_{n = -\infty}^{+\infty} 2^{n}f\left(\frac{x}{2^{n}}\right) = \abs{x}
     \]
 \end{exo}
+
+\begin{exo}[Série de Primitives]
+    Soit $f_{0} : \left[a, b\right] \rightarrow \R$ continue. On définit $f_{n}$ par récurrence par $f_{n + 1}(x) = \int\limits_{a}^{x}f_{n}$ pour $n \in \N$ et $x \in \left[a, b\right]$.
+    Etudier et évaluer la fonction $g : x \mapsto \sum_{n = 1}^{\infty} f_{n}(x)$
+\end{exo}
+
+\begin{exo}
+    \begin{enumerate}
+        \item Soient $n \geq 1$, $f_{0}, \ldots, f_{n-1}$ des applications de $\R$ dans $\C$. Montrer qu'elles forment une famille libre si et seulement si il y a $n$ réels $a_{0}, \ldots, a_{n-1}$ tels que la matrice $f_{i}(a_{j})$ soit inversible. 
+        \item Soit $F$ un sous-espace vectoriel de dimension finie des applications bornées de $\R$ dans $\C$. Montrer qu'une suite de $F$ converge simplement si et seulement si elle converge uniformément.
+    \end{enumerate}
+\end{exo}
+
 
 
 \chapter{Intégrales à paramètre}
@@ -781,6 +798,25 @@ En prépa, on a tendance à définir un corps comme étant commutatif. Certains 
 
 \section{Digressions et exercices supplémentaires}
 % Parler des C-eve
+
+\begin{exo}[Théorème de Müntz : Difficile, voir Mines Maths II 2009 MP]
+    On se place sur l'espace vectoriel $E$ des fonctions réelles continues sur $\left[0, 1\right]$ muni de $\scalar{f, g} = \int\limits_{0}^{1}fg$. On notera $x^{\alpha} : x \mapsto x^{\alpha}$. On se donne une suite de réels strictement positifs $\alpha_{n}$. On dit que $u$ est adhérent aux $x^{\alpha_{i}}$ si pour tout $\epsilon > 0$ il existe $n$, $\lambda_{1}, \ldots, \lambda_{n}$ tels que :
+    \[
+        \norm{u - \sum_{i = 1}^{n}\lambda_{i}x^{\alpha_{i}}} \leq \epsilon    
+    \] 
+    On dit que les $x^{\alpha_{i}}$ sont denses dans $E$ si tout $u \in E$ est adhérent aux $x^{\alpha_{i}}$.
+
+    \begin{enumerate}
+        \item On note $E_{n} = \Vect\left(x^{\alpha_{1}}, \ldots, x^{\alpha_{n}}\right)$. Montrer que $u$ est adhérent aux $x^{\alpha_{i}}$ si et seulement si la distance de $u$ à $E_{n}$ 
+        \[
+            d(u, E_{n}) = \inf_{e_{n} \in E_{n}} \norm{u - e_{n}}
+        \]
+        tend vers $0$ quand $n \rightarrow \infty$.
+        \item Pour un réel $\beta > 0$, montrer que \[d(x^{\beta}, E_{n}) = \frac{1}{\sqrt{2\beta + 1}}\prod_{i = 1}^{n}\abs{\frac{\alpha_{i} - \beta}{\alpha_{i} + \beta + 1}}\] On pourra étudier la matrice de Gram des $x^{\alpha_{i}}$ i.e. la matrice des $\scalar{x^{\alpha_{i}}, x^{\alpha_{j}}}$
+        \item En déduire que les $x^{\alpha_{i}}$ sont denses dans $E$ si et seulement si la série $\sum \frac{1}{\alpha_{i}}$ diverge. On se souviendra du théorème de Weierstrass\footnote{Ceci donne une preuve de la divergence de la série harmonique !}.
+    \end{enumerate}
+\end{exo}
+
 
 \chapter{Équations différentielles linéaires}
 

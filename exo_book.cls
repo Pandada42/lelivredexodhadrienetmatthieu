@@ -85,6 +85,7 @@
 \DeclareMathOperator{\rg}{rg}
 \DeclareMathOperator{\ch}{ch}
 \DeclareMathOperator{\sh}{sh}
+\DeclareMathOperator{\Vect}{Vect}
 \renewcommand{\th}{\mathop{\rm th}}
 
 %Macros
